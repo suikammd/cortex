@@ -712,7 +712,7 @@ The `alertmanager_storage_config` configures the Cortex alertmanager storage bac
 
 ```yaml
 # Backend storage to use. Supported backends are: s3, gcs, azure, swift,
-# filesystem, configdb, local.
+# filesystem, oss, configdb, local.
 # CLI flag: -alertmanager-storage.backend
 [backend: <string> | default = "s3"]
 
@@ -994,6 +994,39 @@ filesystem:
   # CLI flag: -alertmanager-storage.filesystem.dir
   [dir: <string> | default = ""]
 
+oss:
+  # OSS endpoint
+  # CLI flag: -alertmanager-storage.oss.endpoint
+  [endpoint: <string> | default = ""]
+
+  # OSS bucket name
+  # CLI flag: -alertmanager-storage.oss.bucket-name
+  [bucket_name: <string> | default = ""]
+
+  # OSS access key ID
+  # CLI flag: -alertmanager-storage.oss.access-key-id
+  [access_key_id: <string> | default = ""]
+
+  # OSS secret access key
+  # CLI flag: -alertmanager-storage.oss.secret-access-key
+  [secret_access_key: <string> | default = ""]
+
+  # OSS Role ARN
+  # CLI flag: -alertmanager-storage.oss.role-arn
+  [role_arn: <string> | default = ""]
+
+  # OSS OIDC provider ARN
+  # CLI flag: -alertmanager-storage.oss.oidc-provider-arn
+  [oidc_provider_arn: <string> | default = ""]
+
+  # OSS OIDC token file path
+  # CLI flag: -alertmanager-storage.oss.oidc-token-file-path
+  [oidc_token_file_path: <string> | default = ""]
+
+  # OSS role session name
+  # CLI flag: -alertmanager-storage.oss.role-session-name
+  [role_session_name: <string> | default = ""]
+
 # The configstore_config configures the config database storing rules and
 # alerts, and is used by the Cortex alertmanager.
 # The CLI flags prefix for this block config is: alertmanager-storage
@@ -1031,7 +1064,7 @@ The `blocks_storage_config` configures the blocks storage.
 
 ```yaml
 # Backend storage to use. Supported backends are: s3, gcs, azure, swift,
-# filesystem.
+# filesystem, oss.
 # CLI flag: -blocks-storage.backend
 [backend: <string> | default = "s3"]
 
@@ -1312,6 +1345,39 @@ filesystem:
   # Local filesystem storage directory.
   # CLI flag: -blocks-storage.filesystem.dir
   [dir: <string> | default = ""]
+
+oss:
+  # OSS endpoint
+  # CLI flag: -blocks-storage.oss.endpoint
+  [endpoint: <string> | default = ""]
+
+  # OSS bucket name
+  # CLI flag: -blocks-storage.oss.bucket-name
+  [bucket_name: <string> | default = ""]
+
+  # OSS access key ID
+  # CLI flag: -blocks-storage.oss.access-key-id
+  [access_key_id: <string> | default = ""]
+
+  # OSS secret access key
+  # CLI flag: -blocks-storage.oss.secret-access-key
+  [secret_access_key: <string> | default = ""]
+
+  # OSS Role ARN
+  # CLI flag: -blocks-storage.oss.role-arn
+  [role_arn: <string> | default = ""]
+
+  # OSS OIDC provider ARN
+  # CLI flag: -blocks-storage.oss.oidc-provider-arn
+  [oidc_provider_arn: <string> | default = ""]
+
+  # OSS OIDC token file path
+  # CLI flag: -blocks-storage.oss.oidc-token-file-path
+  [oidc_token_file_path: <string> | default = ""]
+
+  # OSS role session name
+  # CLI flag: -blocks-storage.oss.role-session-name
+  [role_session_name: <string> | default = ""]
 
 # This configures how the querier and store-gateway discover and synchronize
 # blocks stored in the bucket.
@@ -5759,7 +5825,7 @@ The `ruler_storage_config` configures the Cortex ruler storage backend.
 
 ```yaml
 # Backend storage to use. Supported backends are: s3, gcs, azure, swift,
-# filesystem, configdb, local.
+# filesystem, oss, configdb, local.
 # CLI flag: -ruler-storage.backend
 [backend: <string> | default = "s3"]
 
@@ -6041,6 +6107,39 @@ filesystem:
   # CLI flag: -ruler-storage.filesystem.dir
   [dir: <string> | default = ""]
 
+oss:
+  # OSS endpoint
+  # CLI flag: -ruler-storage.oss.endpoint
+  [endpoint: <string> | default = ""]
+
+  # OSS bucket name
+  # CLI flag: -ruler-storage.oss.bucket-name
+  [bucket_name: <string> | default = ""]
+
+  # OSS access key ID
+  # CLI flag: -ruler-storage.oss.access-key-id
+  [access_key_id: <string> | default = ""]
+
+  # OSS secret access key
+  # CLI flag: -ruler-storage.oss.secret-access-key
+  [secret_access_key: <string> | default = ""]
+
+  # OSS Role ARN
+  # CLI flag: -ruler-storage.oss.role-arn
+  [role_arn: <string> | default = ""]
+
+  # OSS OIDC provider ARN
+  # CLI flag: -ruler-storage.oss.oidc-provider-arn
+  [oidc_provider_arn: <string> | default = ""]
+
+  # OSS OIDC token file path
+  # CLI flag: -ruler-storage.oss.oidc-token-file-path
+  [oidc_token_file_path: <string> | default = ""]
+
+  # OSS role session name
+  # CLI flag: -ruler-storage.oss.role-session-name
+  [role_session_name: <string> | default = ""]
+
 # The configstore_config configures the config database storing rules and
 # alerts, and is used by the Cortex alertmanager.
 # The CLI flags prefix for this block config is: ruler-storage
@@ -6086,7 +6185,7 @@ The `runtime_configuration_storage_config` configures the storage backend for th
 [file: <string> | default = ""]
 
 # Backend storage to use. Supported backends are: s3, gcs, azure, swift,
-# filesystem.
+# filesystem, oss.
 # CLI flag: -runtime-config.backend
 [backend: <string> | default = "filesystem"]
 
@@ -6367,6 +6466,39 @@ filesystem:
   # Local filesystem storage directory.
   # CLI flag: -runtime-config.filesystem.dir
   [dir: <string> | default = ""]
+
+oss:
+  # OSS endpoint
+  # CLI flag: -runtime-config.oss.endpoint
+  [endpoint: <string> | default = ""]
+
+  # OSS bucket name
+  # CLI flag: -runtime-config.oss.bucket-name
+  [bucket_name: <string> | default = ""]
+
+  # OSS access key ID
+  # CLI flag: -runtime-config.oss.access-key-id
+  [access_key_id: <string> | default = ""]
+
+  # OSS secret access key
+  # CLI flag: -runtime-config.oss.secret-access-key
+  [secret_access_key: <string> | default = ""]
+
+  # OSS Role ARN
+  # CLI flag: -runtime-config.oss.role-arn
+  [role_arn: <string> | default = ""]
+
+  # OSS OIDC provider ARN
+  # CLI flag: -runtime-config.oss.oidc-provider-arn
+  [oidc_provider_arn: <string> | default = ""]
+
+  # OSS OIDC token file path
+  # CLI flag: -runtime-config.oss.oidc-token-file-path
+  [oidc_token_file_path: <string> | default = ""]
+
+  # OSS role session name
+  # CLI flag: -runtime-config.oss.role-session-name
+  [role_session_name: <string> | default = ""]
 ```
 
 ### `s3_sse_config`

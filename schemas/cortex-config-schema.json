@@ -626,7 +626,7 @@
         },
         "backend": {
           "default": "s3",
-          "description": "Backend storage to use. Supported backends are: s3, gcs, azure, swift, filesystem, configdb, local.",
+          "description": "Backend storage to use. Supported backends are: s3, gcs, azure, swift, filesystem, oss, configdb, local.",
           "type": "string",
           "x-cli-flag": "alertmanager-storage.backend"
         },
@@ -664,6 +664,51 @@
               "description": "Path at which alertmanager configurations are stored.",
               "type": "string",
               "x-cli-flag": "alertmanager-storage.local.path"
+            }
+          },
+          "type": "object"
+        },
+        "oss": {
+          "properties": {
+            "access_key_id": {
+              "description": "OSS access key ID",
+              "type": "string",
+              "x-cli-flag": "alertmanager-storage.oss.access-key-id"
+            },
+            "bucket_name": {
+              "description": "OSS bucket name",
+              "type": "string",
+              "x-cli-flag": "alertmanager-storage.oss.bucket-name"
+            },
+            "endpoint": {
+              "description": "OSS endpoint",
+              "type": "string",
+              "x-cli-flag": "alertmanager-storage.oss.endpoint"
+            },
+            "oidc_provider_arn": {
+              "description": "OSS OIDC provider ARN",
+              "type": "string",
+              "x-cli-flag": "alertmanager-storage.oss.oidc-provider-arn"
+            },
+            "oidc_token_file_path": {
+              "description": "OSS OIDC token file path",
+              "type": "string",
+              "x-cli-flag": "alertmanager-storage.oss.oidc-token-file-path"
+            },
+            "role_arn": {
+              "description": "OSS Role ARN",
+              "type": "string",
+              "x-cli-flag": "alertmanager-storage.oss.role-arn"
+            },
+            "role_session_name": {
+              "description": "OSS role session name",
+              "type": "string",
+              "x-cli-flag": "alertmanager-storage.oss.role-session-name"
+            },
+            "secret_access_key": {
+              "description": "OSS secret access key",
+              "type": "string",
+              "x-cli-flag": "alertmanager-storage.oss.secret-access-key"
             }
           },
           "type": "object"
@@ -1052,7 +1097,7 @@
         },
         "backend": {
           "default": "s3",
-          "description": "Backend storage to use. Supported backends are: s3, gcs, azure, swift, filesystem.",
+          "description": "Backend storage to use. Supported backends are: s3, gcs, azure, swift, filesystem, oss.",
           "type": "string",
           "x-cli-flag": "blocks-storage.backend"
         },
@@ -2697,6 +2742,51 @@
               "description": "JSON representing either a Google Developers Console client_credentials.json file or a Google Developers service account key file. If empty, fallback to Google default logic.",
               "type": "string",
               "x-cli-flag": "blocks-storage.gcs.service-account"
+            }
+          },
+          "type": "object"
+        },
+        "oss": {
+          "properties": {
+            "access_key_id": {
+              "description": "OSS access key ID",
+              "type": "string",
+              "x-cli-flag": "blocks-storage.oss.access-key-id"
+            },
+            "bucket_name": {
+              "description": "OSS bucket name",
+              "type": "string",
+              "x-cli-flag": "blocks-storage.oss.bucket-name"
+            },
+            "endpoint": {
+              "description": "OSS endpoint",
+              "type": "string",
+              "x-cli-flag": "blocks-storage.oss.endpoint"
+            },
+            "oidc_provider_arn": {
+              "description": "OSS OIDC provider ARN",
+              "type": "string",
+              "x-cli-flag": "blocks-storage.oss.oidc-provider-arn"
+            },
+            "oidc_token_file_path": {
+              "description": "OSS OIDC token file path",
+              "type": "string",
+              "x-cli-flag": "blocks-storage.oss.oidc-token-file-path"
+            },
+            "role_arn": {
+              "description": "OSS Role ARN",
+              "type": "string",
+              "x-cli-flag": "blocks-storage.oss.role-arn"
+            },
+            "role_session_name": {
+              "description": "OSS role session name",
+              "type": "string",
+              "x-cli-flag": "blocks-storage.oss.role-session-name"
+            },
+            "secret_access_key": {
+              "description": "OSS secret access key",
+              "type": "string",
+              "x-cli-flag": "blocks-storage.oss.secret-access-key"
             }
           },
           "type": "object"
@@ -7354,7 +7444,7 @@
         },
         "backend": {
           "default": "s3",
-          "description": "Backend storage to use. Supported backends are: s3, gcs, azure, swift, filesystem, configdb, local.",
+          "description": "Backend storage to use. Supported backends are: s3, gcs, azure, swift, filesystem, oss, configdb, local.",
           "type": "string",
           "x-cli-flag": "ruler-storage.backend"
         },
@@ -7392,6 +7482,51 @@
               "description": "Directory to scan for rules",
               "type": "string",
               "x-cli-flag": "ruler-storage.local.directory"
+            }
+          },
+          "type": "object"
+        },
+        "oss": {
+          "properties": {
+            "access_key_id": {
+              "description": "OSS access key ID",
+              "type": "string",
+              "x-cli-flag": "ruler-storage.oss.access-key-id"
+            },
+            "bucket_name": {
+              "description": "OSS bucket name",
+              "type": "string",
+              "x-cli-flag": "ruler-storage.oss.bucket-name"
+            },
+            "endpoint": {
+              "description": "OSS endpoint",
+              "type": "string",
+              "x-cli-flag": "ruler-storage.oss.endpoint"
+            },
+            "oidc_provider_arn": {
+              "description": "OSS OIDC provider ARN",
+              "type": "string",
+              "x-cli-flag": "ruler-storage.oss.oidc-provider-arn"
+            },
+            "oidc_token_file_path": {
+              "description": "OSS OIDC token file path",
+              "type": "string",
+              "x-cli-flag": "ruler-storage.oss.oidc-token-file-path"
+            },
+            "role_arn": {
+              "description": "OSS Role ARN",
+              "type": "string",
+              "x-cli-flag": "ruler-storage.oss.role-arn"
+            },
+            "role_session_name": {
+              "description": "OSS role session name",
+              "type": "string",
+              "x-cli-flag": "ruler-storage.oss.role-session-name"
+            },
+            "secret_access_key": {
+              "description": "OSS secret access key",
+              "type": "string",
+              "x-cli-flag": "ruler-storage.oss.secret-access-key"
             }
           },
           "type": "object"
@@ -7780,7 +7915,7 @@
         },
         "backend": {
           "default": "filesystem",
-          "description": "Backend storage to use. Supported backends are: s3, gcs, azure, swift, filesystem.",
+          "description": "Backend storage to use. Supported backends are: s3, gcs, azure, swift, filesystem, oss.",
           "type": "string",
           "x-cli-flag": "runtime-config.backend"
         },
@@ -7810,6 +7945,51 @@
               "description": "JSON representing either a Google Developers Console client_credentials.json file or a Google Developers service account key file. If empty, fallback to Google default logic.",
               "type": "string",
               "x-cli-flag": "runtime-config.gcs.service-account"
+            }
+          },
+          "type": "object"
+        },
+        "oss": {
+          "properties": {
+            "access_key_id": {
+              "description": "OSS access key ID",
+              "type": "string",
+              "x-cli-flag": "runtime-config.oss.access-key-id"
+            },
+            "bucket_name": {
+              "description": "OSS bucket name",
+              "type": "string",
+              "x-cli-flag": "runtime-config.oss.bucket-name"
+            },
+            "endpoint": {
+              "description": "OSS endpoint",
+              "type": "string",
+              "x-cli-flag": "runtime-config.oss.endpoint"
+            },
+            "oidc_provider_arn": {
+              "description": "OSS OIDC provider ARN",
+              "type": "string",
+              "x-cli-flag": "runtime-config.oss.oidc-provider-arn"
+            },
+            "oidc_token_file_path": {
+              "description": "OSS OIDC token file path",
+              "type": "string",
+              "x-cli-flag": "runtime-config.oss.oidc-token-file-path"
+            },
+            "role_arn": {
+              "description": "OSS Role ARN",
+              "type": "string",
+              "x-cli-flag": "runtime-config.oss.role-arn"
+            },
+            "role_session_name": {
+              "description": "OSS role session name",
+              "type": "string",
+              "x-cli-flag": "runtime-config.oss.role-session-name"
+            },
+            "secret_access_key": {
+              "description": "OSS secret access key",
+              "type": "string",
+              "x-cli-flag": "runtime-config.oss.secret-access-key"
             }
           },
           "type": "object"

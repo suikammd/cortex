@@ -17,6 +17,7 @@ import (
 	"github.com/cortexproject/cortex/pkg/storage/bucket/azure"
 	"github.com/cortexproject/cortex/pkg/storage/bucket/filesystem"
 	"github.com/cortexproject/cortex/pkg/storage/bucket/gcs"
+	"github.com/cortexproject/cortex/pkg/storage/bucket/oss"
 	"github.com/cortexproject/cortex/pkg/storage/bucket/s3"
 	"github.com/cortexproject/cortex/pkg/storage/bucket/swift"
 )
@@ -36,10 +37,13 @@ const (
 
 	// Filesystem is the value for the filesystem storage backend.
 	Filesystem = "filesystem"
+
+	// OSS is the value for the Aliyun OSS storage backend.
+	OSS = "oss"
 )
 
 var (
-	SupportedBackends = []string{S3, GCS, Azure, Swift, Filesystem}
+	SupportedBackends = []string{S3, GCS, Azure, Swift, Filesystem, OSS}
 
 	ErrUnsupportedStorageBackend = errors.New("unsupported storage backend")
 
@@ -55,6 +59,7 @@ type Config struct {
 	Azure      azure.Config      `yaml:"azure"`
 	Swift      swift.Config      `yaml:"swift"`
 	Filesystem filesystem.Config `yaml:"filesystem"`
+	OSS        oss.Config        `yaml:"oss"`
 
 	// Not used internally, meant to allow callers to wrap Buckets
 	// created using this config
@@ -85,6 +90,7 @@ func (cfg *Config) RegisterFlagsWithPrefixAndBackend(prefix string, f *flag.Flag
 	cfg.Azure.RegisterFlagsWithPrefix(prefix, f)
 	cfg.Swift.RegisterFlagsWithPrefix(prefix, f)
 	cfg.Filesystem.RegisterFlagsWithPrefix(prefix, f)
+	cfg.OSS.RegisterFlagsWithPrefix(prefix, f)
 
 	f.StringVar(&cfg.Backend, prefix+"backend", defaultBackend, fmt.Sprintf("Backend storage to use. Supported backends are: %s.", strings.Join(cfg.supportedBackends(), ", ")))
 }
@@ -117,6 +123,8 @@ func NewClient(ctx context.Context, cfg Config, hedgedRoundTripper func(rt http.
 		client, err = swift.NewBucketClient(cfg.Swift, hedgedRoundTripper, name, logger)
 	case Filesystem:
 		client, err = filesystem.NewBucketClient(cfg.Filesystem)
+	case OSS:
+		client, err = oss.NewBucketClient(ctx, cfg.OSS, hedgedRoundTripper, name, logger)
 	default:
 		return nil, ErrUnsupportedStorageBackend
 	}

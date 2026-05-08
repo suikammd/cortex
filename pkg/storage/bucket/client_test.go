@@ -41,12 +41,21 @@ gcs:
       "private_key_id": "id",
       "private_key": "-----BEGIN PRIVATE KEY-----\nSOMETHING\n-----END PRIVATE KEY-----\n",
       "client_email": "test@test.com",
-      "client_id": "12345",
+      "client_id": "id",
       "auth_uri": "https://accounts.google.com/o/oauth2/auth",
       "token_uri": "https://oauth2.googleapis.com/token",
       "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-      "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/test%40test.com"
+      "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/test@test.com"
     }
+`
+
+	configWithOSSBackend = `
+backend: oss
+oss:
+  bucket_name:     test
+  endpoint:        oss-cn-hangzhou.aliyuncs.com
+  access_key_id:   test-key
+  secret_access_key: test-secret
 `
 
 	configWithUnknownBackend = `
@@ -67,6 +76,10 @@ func TestNewClient(t *testing.T) {
 		},
 		"should create a GCS bucket": {
 			config:      configWithGCSBackend,
+			expectedErr: nil,
+		},
+		"should create an OSS bucket": {
+			config:      configWithOSSBackend,
 			expectedErr: nil,
 		},
 		"should return error on unknown backend": {

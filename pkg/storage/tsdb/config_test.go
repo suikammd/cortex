@@ -30,6 +30,12 @@ func TestConfig_Validate(t *testing.T) {
 			},
 			expectedErr: nil,
 		},
+		"should pass on OSS backend": {
+			setup: func(cfg *BlocksStorageConfig) {
+				cfg.Bucket.Backend = "oss"
+			},
+			expectedErr: nil,
+		},
 		"should fail on unknown storage backend": {
 			setup: func(cfg *BlocksStorageConfig) {
 				cfg.Bucket.Backend = "unknown"

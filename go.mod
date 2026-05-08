@@ -118,6 +118,10 @@ require (
 	github.com/GoogleCloudPlatform/opentelemetry-operations-go/internal/resourcemapping v0.52.0 // indirect
 	github.com/VictoriaMetrics/easyproto v0.1.4 // indirect
 	github.com/alecthomas/kingpin/v2 v2.4.0 // indirect
+	github.com/alibabacloud-go/debug v1.0.1 // indirect
+	github.com/alibabacloud-go/tea v1.2.2 // indirect
+	github.com/aliyun/alibabacloud-oss-go-sdk-v2 v1.5.1 // indirect
+	github.com/aliyun/credentials-go v1.4.12 // indirect
 	github.com/andybalholm/brotli v1.1.1 // indirect
 	github.com/armon/go-metrics v0.4.1 // indirect
 	github.com/aws/aws-sdk-go-v2/credentials v1.19.7 // indirect
@@ -306,6 +310,7 @@ require (
 	google.golang.org/genproto v0.0.0-20250603155806-513f23925822 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20251202230838-ff82c1b0f217 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260114163908-3f89685c29c3 // indirect
+	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/telebot.v3 v3.3.8 // indirect
 	k8s.io/apimachinery v0.34.1 // indirect
 	k8s.io/client-go v0.34.1 // indirect
@@ -345,3 +350,5 @@ exclude github.com/envoyproxy/go-control-plane/envoy v1.32.3
 
 // Required by Prometheus v0.308+ config package for OTLP translation strategy types.
 replace github.com/prometheus/otlptranslator => github.com/prometheus/otlptranslator v1.0.0
+
+replace github.com/thanos-io/objstore => github.com/suikammd/objstore v0.0.0-20260508085249-30f1266600a1
