@@ -14,6 +14,7 @@ import (
 	"github.com/thanos-io/objstore"
 	"github.com/thanos-io/objstore/tracing/opentracing"
 
+	"github.com/cortexproject/cortex/pkg/storage/bucket/aliyun"
 	"github.com/cortexproject/cortex/pkg/storage/bucket/azure"
 	"github.com/cortexproject/cortex/pkg/storage/bucket/filesystem"
 	"github.com/cortexproject/cortex/pkg/storage/bucket/gcs"
@@ -31,6 +32,9 @@ const (
 	// Azure is the value for the Azure storage backend.
 	Azure = "azure"
 
+	// Aliyun is the value for the Aliyun OSS storage backend.
+	Aliyun = "aliyun"
+
 	// Swift is the value for the Openstack Swift storage backend.
 	Swift = "swift"
 
@@ -39,7 +43,7 @@ const (
 )
 
 var (
-	SupportedBackends = []string{S3, GCS, Azure, Swift, Filesystem}
+	SupportedBackends = []string{S3, GCS, Azure, Aliyun, Swift, Filesystem}
 
 	ErrUnsupportedStorageBackend = errors.New("unsupported storage backend")
 
@@ -53,6 +57,7 @@ type Config struct {
 	S3         s3.Config         `yaml:"s3"`
 	GCS        gcs.Config        `yaml:"gcs"`
 	Azure      azure.Config      `yaml:"azure"`
+	Aliyun     aliyun.Config     `yaml:"aliyun"`
 	Swift      swift.Config      `yaml:"swift"`
 	Filesystem filesystem.Config `yaml:"filesystem"`
 
@@ -83,6 +88,7 @@ func (cfg *Config) RegisterFlagsWithPrefixAndBackend(prefix string, f *flag.Flag
 	cfg.S3.RegisterFlagsWithPrefix(prefix, f)
 	cfg.GCS.RegisterFlagsWithPrefix(prefix, f)
 	cfg.Azure.RegisterFlagsWithPrefix(prefix, f)
+	cfg.Aliyun.RegisterFlagsWithPrefix(prefix, f)
 	cfg.Swift.RegisterFlagsWithPrefix(prefix, f)
 	cfg.Filesystem.RegisterFlagsWithPrefix(prefix, f)
 
@@ -96,6 +102,11 @@ func (cfg *Config) Validate() error {
 
 	if cfg.Backend == S3 {
 		if err := cfg.S3.Validate(); err != nil {
+			return err
+		}
+	}
+	if cfg.Backend == Aliyun {
+		if err := cfg.Aliyun.Validate(); err != nil {
 			return err
 		}
 	}
@@ -113,6 +124,8 @@ func NewClient(ctx context.Context, cfg Config, hedgedRoundTripper func(rt http.
 		client, err = gcs.NewBucketClient(ctx, cfg.GCS, hedgedRoundTripper, name, logger)
 	case Azure:
 		client, err = azure.NewBucketClient(cfg.Azure, hedgedRoundTripper, name, logger)
+	case Aliyun:
+		client, err = aliyun.NewBucketClient(cfg.Aliyun, hedgedRoundTripper, name, logger)
 	case Swift:
 		client, err = swift.NewBucketClient(cfg.Swift, hedgedRoundTripper, name, logger)
 	case Filesystem:

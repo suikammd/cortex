@@ -54,6 +54,7 @@ bucket_name: test-bucket-name
 disable_dualstack: true
 secret_access_key: test-secret-access-key
 access_key_id: test-access-key-id
+session_token: test-session-token
 insecure: true
 signature_version: test-signature-version
 bucket_lookup_type: virtual-hosted
@@ -78,6 +79,7 @@ http:
 				DisableDualstack: true,
 				SecretAccessKey:  flagext.Secret{Value: "test-secret-access-key"},
 				AccessKeyID:      "test-access-key-id",
+				SessionToken:     flagext.Secret{Value: "test-session-token"},
 				Insecure:         true,
 				SignatureVersion: "test-signature-version",
 				BucketLookupType: BucketVirtualHostLookup,

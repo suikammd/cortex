@@ -49,6 +49,16 @@ gcs:
     }
 `
 
+	configWithAliyunBackend = `
+backend: aliyun
+aliyun:
+  endpoint:          localhost
+  bucket_name:       test
+  access_key_id:     xxx
+  secret_access_key: yyy
+  insecure:          true
+`
+
 	configWithUnknownBackend = `
 backend: unknown
 `
@@ -67,6 +77,10 @@ func TestNewClient(t *testing.T) {
 		},
 		"should create a GCS bucket": {
 			config:      configWithGCSBackend,
+			expectedErr: nil,
+		},
+		"should create an Aliyun bucket": {
+			config:      configWithAliyunBackend,
 			expectedErr: nil,
 		},
 		"should return error on unknown backend": {

@@ -89,6 +89,7 @@ func newS3Config(cfg Config) (s3.Config, error) {
 		DisableDualstack: cfg.DisableDualstack,
 		AccessKey:        cfg.AccessKeyID,
 		SecretKey:        cfg.SecretAccessKey.Value,
+		SessionToken:     cfg.SessionToken.Value,
 		Insecure:         cfg.Insecure,
 		SSEConfig:        sseCfg,
 		SendContentMd5:   cfg.SendContentMd5,

@@ -69,6 +69,7 @@ type Config struct {
 	DisableDualstack   bool           `yaml:"disable_dualstack"`
 	SecretAccessKey    flagext.Secret `yaml:"secret_access_key"`
 	AccessKeyID        string         `yaml:"access_key_id"`
+	SessionToken       flagext.Secret `yaml:"session_token"`
 	Insecure           bool           `yaml:"insecure"`
 	SignatureVersion   string         `yaml:"signature_version"`
 	BucketLookupType   string         `yaml:"bucket_lookup_type"`
@@ -88,6 +89,7 @@ func (cfg *Config) RegisterFlags(f *flag.FlagSet) {
 func (cfg *Config) RegisterFlagsWithPrefix(prefix string, f *flag.FlagSet) {
 	f.StringVar(&cfg.AccessKeyID, prefix+"s3.access-key-id", "", "S3 access key ID")
 	f.Var(&cfg.SecretAccessKey, prefix+"s3.secret-access-key", "S3 secret access key")
+	f.Var(&cfg.SessionToken, prefix+"s3.session-token", "S3 session token")
 	f.StringVar(&cfg.BucketName, prefix+"s3.bucket-name", "", "S3 bucket name")
 	f.StringVar(&cfg.Region, prefix+"s3.region", "", "S3 region. If unset, the client will issue a S3 GetBucketLocation API call to autodetect it.")
 	f.BoolVar(&cfg.DisableDualstack, prefix+"s3.disable-dualstack", false, "If enabled, S3 endpoint will use the non-dualstack variant.")
