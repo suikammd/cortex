@@ -999,6 +999,10 @@ oss:
   # CLI flag: -alertmanager-storage.oss.endpoint
   [endpoint: <string> | default = ""]
 
+  # OSS region
+  # CLI flag: -alertmanager-storage.oss.region
+  [region: <string> | default = ""]
+
   # OSS bucket name
   # CLI flag: -alertmanager-storage.oss.bucket-name
   [bucket_name: <string> | default = ""]
@@ -1350,6 +1354,10 @@ oss:
   # OSS endpoint
   # CLI flag: -blocks-storage.oss.endpoint
   [endpoint: <string> | default = ""]
+
+  # OSS region
+  # CLI flag: -blocks-storage.oss.region
+  [region: <string> | default = ""]
 
   # OSS bucket name
   # CLI flag: -blocks-storage.oss.bucket-name
@@ -6112,6 +6120,10 @@ oss:
   # CLI flag: -ruler-storage.oss.endpoint
   [endpoint: <string> | default = ""]
 
+  # OSS region
+  # CLI flag: -ruler-storage.oss.region
+  [region: <string> | default = ""]
+
   # OSS bucket name
   # CLI flag: -ruler-storage.oss.bucket-name
   [bucket_name: <string> | default = ""]
@@ -6471,6 +6483,10 @@ oss:
   # OSS endpoint
   # CLI flag: -runtime-config.oss.endpoint
   [endpoint: <string> | default = ""]
+
+  # OSS region
+  # CLI flag: -runtime-config.oss.region
+  [region: <string> | default = ""]
 
   # OSS bucket name
   # CLI flag: -runtime-config.oss.bucket-name

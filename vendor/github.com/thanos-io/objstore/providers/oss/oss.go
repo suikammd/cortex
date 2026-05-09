@@ -32,6 +32,7 @@ const PartSize = 1024 * 1024 * 128
 // Config stores the configuration for oss bucket.
 type Config struct {
 	Endpoint        string `yaml:"endpoint"`
+	Region          string `yaml:"region"`
 	Bucket          string `yaml:"bucket"`
 	AccessKeyID     string `yaml:"access_key_id"`
 	AccessKeySecret string `yaml:"access_key_secret"`
@@ -190,14 +191,13 @@ func (b *Bucket) Attributes(ctx context.Context, name string) (objstore.ObjectAt
 		return objstore.ObjectAttributes{}, err
 	}
 
-	var mod time.Time
-	if resp.LastModified != nil {
-		mod = *resp.LastModified
+	if resp.LastModified == nil {
+		return objstore.ObjectAttributes{}, errors.Errorf("Last-Modified header not found for %s", name)
 	}
 
 	return objstore.ObjectAttributes{
 		Size:         resp.ContentLength,
-		LastModified: mod,
+		LastModified: *resp.LastModified,
 	}, nil
 }
 
@@ -237,6 +237,8 @@ func getCredentialsProvider(config Config) (aliossCred.CredentialsProvider, erro
 		return nil, errors.Wrap(err, "failed to create aliyun credential")
 	}
 
+	// 3. Fallback to default credential provider chain (e.g., reading from environment variables) if credCfg is nil.
+	// Note: credentials-go automatically refreshes the token synchronously 3 minutes before it expires.
 	cp := aliossCred.CredentialsProviderFunc(func(ctx context.Context) (aliossCred.Credentials, error) {
 		model, err := cred.GetCredential()
 		if err != nil {
@@ -252,6 +254,7 @@ func getCredentialsProvider(config Config) (aliossCred.CredentialsProvider, erro
 		if model.SecurityToken != nil {
 			securityToken = *model.SecurityToken
 		}
+		
 		return aliossCred.Credentials{
 			AccessKeyID:     accessKeyID,
 			AccessKeySecret: accessKeySecret,
@@ -269,6 +272,9 @@ func NewBucketWithConfig(logger log.Logger, config Config, component string, wra
 	}
 
 	cfg := oss.LoadDefaultConfig().WithEndpoint(config.Endpoint)
+	if config.Region != "" {
+		cfg.WithRegion(config.Region)
+	}
 
 	cp, err := getCredentialsProvider(config)
 	if err != nil {
@@ -393,6 +399,9 @@ func NewTestBucketFromConfig(t testing.TB, c Config, reuseBucket bool) (objstore
 		}
 
 		cfg := oss.LoadDefaultConfig().WithEndpoint(c.Endpoint)
+		if c.Region != "" {
+			cfg.WithRegion(c.Region)
+		}
 		cp, err := getCredentialsProvider(c)
 		if err != nil {
 			return nil, nil, errors.Wrap(err, "get credentials provider for test client failed")

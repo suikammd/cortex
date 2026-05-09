@@ -13,6 +13,7 @@ import (
 func NewBucketClient(ctx context.Context, cfg Config, hedgedRoundTripper func(rt http.RoundTripper) http.RoundTripper, name string, logger log.Logger) (objstore.Bucket, error) {
 	bucketConfig := oss.Config{
 		Endpoint:          cfg.Endpoint,
+		Region:            cfg.Region,
 		Bucket:            cfg.BucketName,
 		AccessKeyID:       cfg.AccessKeyID,
 		AccessKeySecret:   cfg.SecretAccessKey.Value,

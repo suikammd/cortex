@@ -75,6 +75,7 @@ require (
 
 require (
 	github.com/VictoriaMetrics/fastcache v1.12.2
+	github.com/aliyun/alibabacloud-oss-go-sdk-v2 v1.5.1
 	github.com/aws/aws-sdk-go-v2 v1.41.1
 	github.com/aws/aws-sdk-go-v2/config v1.32.7
 	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.50.1
@@ -120,7 +121,6 @@ require (
 	github.com/alecthomas/kingpin/v2 v2.4.0 // indirect
 	github.com/alibabacloud-go/debug v1.0.1 // indirect
 	github.com/alibabacloud-go/tea v1.2.2 // indirect
-	github.com/aliyun/alibabacloud-oss-go-sdk-v2 v1.5.1 // indirect
 	github.com/aliyun/credentials-go v1.4.12 // indirect
 	github.com/andybalholm/brotli v1.1.1 // indirect
 	github.com/armon/go-metrics v0.4.1 // indirect
@@ -351,4 +351,4 @@ exclude github.com/envoyproxy/go-control-plane/envoy v1.32.3
 // Required by Prometheus v0.308+ config package for OTLP translation strategy types.
 replace github.com/prometheus/otlptranslator => github.com/prometheus/otlptranslator v1.0.0
 
-replace github.com/thanos-io/objstore => github.com/suikammd/objstore v0.0.0-20260508085249-30f1266600a1
+replace github.com/thanos-io/objstore => github.com/suikammd/objstore v0.0.0-20260509065758-880650cd3acb

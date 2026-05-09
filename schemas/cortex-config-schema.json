@@ -695,6 +695,11 @@
               "type": "string",
               "x-cli-flag": "alertmanager-storage.oss.oidc-token-file-path"
             },
+            "region": {
+              "description": "OSS region",
+              "type": "string",
+              "x-cli-flag": "alertmanager-storage.oss.region"
+            },
             "role_arn": {
               "description": "OSS Role ARN",
               "type": "string",
@@ -2772,6 +2777,11 @@
               "description": "OSS OIDC token file path",
               "type": "string",
               "x-cli-flag": "blocks-storage.oss.oidc-token-file-path"
+            },
+            "region": {
+              "description": "OSS region",
+              "type": "string",
+              "x-cli-flag": "blocks-storage.oss.region"
             },
             "role_arn": {
               "description": "OSS Role ARN",
@@ -7513,6 +7523,11 @@
               "type": "string",
               "x-cli-flag": "ruler-storage.oss.oidc-token-file-path"
             },
+            "region": {
+              "description": "OSS region",
+              "type": "string",
+              "x-cli-flag": "ruler-storage.oss.region"
+            },
             "role_arn": {
               "description": "OSS Role ARN",
               "type": "string",
@@ -7975,6 +7990,11 @@
               "description": "OSS OIDC token file path",
               "type": "string",
               "x-cli-flag": "runtime-config.oss.oidc-token-file-path"
+            },
+            "region": {
+              "description": "OSS region",
+              "type": "string",
+              "x-cli-flag": "runtime-config.oss.region"
             },
             "role_arn": {
               "description": "OSS Role ARN",
