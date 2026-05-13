@@ -339,7 +339,7 @@ The `blocks_storage_config` configures the blocks storage.
 ```yaml
 blocks_storage:
   # Backend storage to use. Supported backends are: s3, gcs, azure, swift,
-  # filesystem.
+  # filesystem, oss.
   # CLI flag: -blocks-storage.backend
   [backend: <string> | default = "s3"]
 
@@ -621,6 +621,27 @@ blocks_storage:
     # Local filesystem storage directory.
     # CLI flag: -blocks-storage.filesystem.dir
     [dir: <string> | default = ""]
+
+  oss:
+    # OSS endpoint
+    # CLI flag: -blocks-storage.oss.endpoint
+    [endpoint: <string> | default = ""]
+
+    # OSS region
+    # CLI flag: -blocks-storage.oss.region
+    [region: <string> | default = ""]
+
+    # OSS bucket name
+    # CLI flag: -blocks-storage.oss.bucket-name
+    [bucket_name: <string> | default = ""]
+
+    # OSS access key ID
+    # CLI flag: -blocks-storage.oss.access-key-id
+    [access_key_id: <string> | default = ""]
+
+    # OSS secret access key
+    # CLI flag: -blocks-storage.oss.secret-access-key
+    [secret_access_key: <string> | default = ""]
 
   # This configures how the querier and store-gateway discover and synchronize
   # blocks stored in the bucket.

@@ -685,30 +685,10 @@
               "type": "string",
               "x-cli-flag": "alertmanager-storage.oss.endpoint"
             },
-            "oidc_provider_arn": {
-              "description": "OSS OIDC provider ARN",
-              "type": "string",
-              "x-cli-flag": "alertmanager-storage.oss.oidc-provider-arn"
-            },
-            "oidc_token_file_path": {
-              "description": "OSS OIDC token file path",
-              "type": "string",
-              "x-cli-flag": "alertmanager-storage.oss.oidc-token-file-path"
-            },
             "region": {
               "description": "OSS region",
               "type": "string",
               "x-cli-flag": "alertmanager-storage.oss.region"
-            },
-            "role_arn": {
-              "description": "OSS Role ARN",
-              "type": "string",
-              "x-cli-flag": "alertmanager-storage.oss.role-arn"
-            },
-            "role_session_name": {
-              "description": "OSS role session name",
-              "type": "string",
-              "x-cli-flag": "alertmanager-storage.oss.role-session-name"
             },
             "secret_access_key": {
               "description": "OSS secret access key",
@@ -2768,30 +2748,10 @@
               "type": "string",
               "x-cli-flag": "blocks-storage.oss.endpoint"
             },
-            "oidc_provider_arn": {
-              "description": "OSS OIDC provider ARN",
-              "type": "string",
-              "x-cli-flag": "blocks-storage.oss.oidc-provider-arn"
-            },
-            "oidc_token_file_path": {
-              "description": "OSS OIDC token file path",
-              "type": "string",
-              "x-cli-flag": "blocks-storage.oss.oidc-token-file-path"
-            },
             "region": {
               "description": "OSS region",
               "type": "string",
               "x-cli-flag": "blocks-storage.oss.region"
-            },
-            "role_arn": {
-              "description": "OSS Role ARN",
-              "type": "string",
-              "x-cli-flag": "blocks-storage.oss.role-arn"
-            },
-            "role_session_name": {
-              "description": "OSS role session name",
-              "type": "string",
-              "x-cli-flag": "blocks-storage.oss.role-session-name"
             },
             "secret_access_key": {
               "description": "OSS secret access key",
@@ -7513,30 +7473,10 @@
               "type": "string",
               "x-cli-flag": "ruler-storage.oss.endpoint"
             },
-            "oidc_provider_arn": {
-              "description": "OSS OIDC provider ARN",
-              "type": "string",
-              "x-cli-flag": "ruler-storage.oss.oidc-provider-arn"
-            },
-            "oidc_token_file_path": {
-              "description": "OSS OIDC token file path",
-              "type": "string",
-              "x-cli-flag": "ruler-storage.oss.oidc-token-file-path"
-            },
             "region": {
               "description": "OSS region",
               "type": "string",
               "x-cli-flag": "ruler-storage.oss.region"
-            },
-            "role_arn": {
-              "description": "OSS Role ARN",
-              "type": "string",
-              "x-cli-flag": "ruler-storage.oss.role-arn"
-            },
-            "role_session_name": {
-              "description": "OSS role session name",
-              "type": "string",
-              "x-cli-flag": "ruler-storage.oss.role-session-name"
             },
             "secret_access_key": {
               "description": "OSS secret access key",
@@ -7981,30 +7921,10 @@
               "type": "string",
               "x-cli-flag": "runtime-config.oss.endpoint"
             },
-            "oidc_provider_arn": {
-              "description": "OSS OIDC provider ARN",
-              "type": "string",
-              "x-cli-flag": "runtime-config.oss.oidc-provider-arn"
-            },
-            "oidc_token_file_path": {
-              "description": "OSS OIDC token file path",
-              "type": "string",
-              "x-cli-flag": "runtime-config.oss.oidc-token-file-path"
-            },
             "region": {
               "description": "OSS region",
               "type": "string",
               "x-cli-flag": "runtime-config.oss.region"
-            },
-            "role_arn": {
-              "description": "OSS Role ARN",
-              "type": "string",
-              "x-cli-flag": "runtime-config.oss.role-arn"
-            },
-            "role_session_name": {
-              "description": "OSS role session name",
-              "type": "string",
-              "x-cli-flag": "runtime-config.oss.role-session-name"
             },
             "secret_access_key": {
               "description": "OSS secret access key",

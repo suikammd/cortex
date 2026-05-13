@@ -611,6 +611,7 @@ The AliYun OSS object storage yaml configuration definition:
 type: ALIYUNOSS
 config:
   endpoint: ""
+  region: ""
   bucket: ""
   access_key_id: ""
   access_key_secret: ""

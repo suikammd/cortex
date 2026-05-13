@@ -36,12 +36,6 @@ type Config struct {
 	Bucket          string `yaml:"bucket"`
 	AccessKeyID     string `yaml:"access_key_id"`
 	AccessKeySecret string `yaml:"access_key_secret"`
-
-	// RRSA (RAM Role for Service Account) related configurations
-	RoleArn           string `yaml:"role_arn"`
-	OIDCProviderArn   string `yaml:"oidc_provider_arn"`
-	OIDCTokenFilePath string `yaml:"oidc_token_file_path"`
-	RoleSessionName   string `yaml:"role_session_name"`
 }
 
 // Bucket implements the store.Bucket interface.
@@ -212,33 +206,23 @@ func NewBucket(logger log.Logger, conf []byte, component string, wrapRoundtrippe
 
 // getCredentialsProvider returns the appropriate credentials provider based on the configuration.
 func getCredentialsProvider(config Config) (aliossCred.CredentialsProvider, error) {
-	// 1. Use static AK/SK if explicitly provided in the config.
+	// Use static AK/SK if explicitly provided in the config.
 	if config.AccessKeyID != "" && config.AccessKeySecret != "" {
 		return aliossCred.NewStaticCredentialsProvider(config.AccessKeyID, config.AccessKeySecret), nil
 	}
 
-	var credCfg *alicred.Config
-	// 2. Use explicit RRSA (OIDC role) config if role_arn, oidc_provider_arn, and oidc_token_file_path are provided.
-	if config.RoleArn != "" && config.OIDCProviderArn != "" && config.OIDCTokenFilePath != "" {
-		credCfg = &alicred.Config{
-			Type:              oss.Ptr("oidc_role_arn"),
-			RoleArn:           oss.Ptr(config.RoleArn),
-			OIDCProviderArn:   oss.Ptr(config.OIDCProviderArn),
-			OIDCTokenFilePath: oss.Ptr(config.OIDCTokenFilePath),
-		}
-		if config.RoleSessionName != "" {
-			credCfg.RoleSessionName = oss.Ptr(config.RoleSessionName)
-		}
-	}
-
-	// 3. Fallback to default credential provider chain (e.g., reading from environment variables) if credCfg is nil.
-	cred, err := alicred.NewCredential(credCfg)
+	// credentials-go uses its default provider chain, for example environment variables,
+	// config files, ECS RAM role, RRSA-related environment variables, etc.
+	cred, err := alicred.NewCredential(nil)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create aliyun credential")
 	}
 
-	// 3. Fallback to default credential provider chain (e.g., reading from environment variables) if credCfg is nil.
-	// Note: credentials-go automatically refreshes the token synchronously 3 minutes before it expires.
+	// Adapt credentials-go's Credential interface to the OSS SDK v2
+	// CredentialsProvider interface.
+	//
+	// credentials-go is responsible for resolving credentials and refreshing
+	// temporary credentials when needed.
 	cp := aliossCred.CredentialsProviderFunc(func(ctx context.Context) (aliossCred.Credentials, error) {
 		model, err := cred.GetCredential()
 		if err != nil {
@@ -254,7 +238,7 @@ func getCredentialsProvider(config Config) (aliossCred.CredentialsProvider, erro
 		if model.SecurityToken != nil {
 			securityToken = *model.SecurityToken
 		}
-		
+
 		return aliossCred.Credentials{
 			AccessKeyID:     accessKeyID,
 			AccessKeySecret: accessKeySecret,

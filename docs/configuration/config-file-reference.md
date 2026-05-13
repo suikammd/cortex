@@ -1015,22 +1015,6 @@ oss:
   # CLI flag: -alertmanager-storage.oss.secret-access-key
   [secret_access_key: <string> | default = ""]
 
-  # OSS Role ARN
-  # CLI flag: -alertmanager-storage.oss.role-arn
-  [role_arn: <string> | default = ""]
-
-  # OSS OIDC provider ARN
-  # CLI flag: -alertmanager-storage.oss.oidc-provider-arn
-  [oidc_provider_arn: <string> | default = ""]
-
-  # OSS OIDC token file path
-  # CLI flag: -alertmanager-storage.oss.oidc-token-file-path
-  [oidc_token_file_path: <string> | default = ""]
-
-  # OSS role session name
-  # CLI flag: -alertmanager-storage.oss.role-session-name
-  [role_session_name: <string> | default = ""]
-
 # The configstore_config configures the config database storing rules and
 # alerts, and is used by the Cortex alertmanager.
 # The CLI flags prefix for this block config is: alertmanager-storage
@@ -1370,22 +1354,6 @@ oss:
   # OSS secret access key
   # CLI flag: -blocks-storage.oss.secret-access-key
   [secret_access_key: <string> | default = ""]
-
-  # OSS Role ARN
-  # CLI flag: -blocks-storage.oss.role-arn
-  [role_arn: <string> | default = ""]
-
-  # OSS OIDC provider ARN
-  # CLI flag: -blocks-storage.oss.oidc-provider-arn
-  [oidc_provider_arn: <string> | default = ""]
-
-  # OSS OIDC token file path
-  # CLI flag: -blocks-storage.oss.oidc-token-file-path
-  [oidc_token_file_path: <string> | default = ""]
-
-  # OSS role session name
-  # CLI flag: -blocks-storage.oss.role-session-name
-  [role_session_name: <string> | default = ""]
 
 # This configures how the querier and store-gateway discover and synchronize
 # blocks stored in the bucket.
@@ -6136,22 +6104,6 @@ oss:
   # CLI flag: -ruler-storage.oss.secret-access-key
   [secret_access_key: <string> | default = ""]
 
-  # OSS Role ARN
-  # CLI flag: -ruler-storage.oss.role-arn
-  [role_arn: <string> | default = ""]
-
-  # OSS OIDC provider ARN
-  # CLI flag: -ruler-storage.oss.oidc-provider-arn
-  [oidc_provider_arn: <string> | default = ""]
-
-  # OSS OIDC token file path
-  # CLI flag: -ruler-storage.oss.oidc-token-file-path
-  [oidc_token_file_path: <string> | default = ""]
-
-  # OSS role session name
-  # CLI flag: -ruler-storage.oss.role-session-name
-  [role_session_name: <string> | default = ""]
-
 # The configstore_config configures the config database storing rules and
 # alerts, and is used by the Cortex alertmanager.
 # The CLI flags prefix for this block config is: ruler-storage
@@ -6499,22 +6451,6 @@ oss:
   # OSS secret access key
   # CLI flag: -runtime-config.oss.secret-access-key
   [secret_access_key: <string> | default = ""]
-
-  # OSS Role ARN
-  # CLI flag: -runtime-config.oss.role-arn
-  [role_arn: <string> | default = ""]
-
-  # OSS OIDC provider ARN
-  # CLI flag: -runtime-config.oss.oidc-provider-arn
-  [oidc_provider_arn: <string> | default = ""]
-
-  # OSS OIDC token file path
-  # CLI flag: -runtime-config.oss.oidc-token-file-path
-  [oidc_token_file_path: <string> | default = ""]
-
-  # OSS role session name
-  # CLI flag: -runtime-config.oss.role-session-name
-  [role_session_name: <string> | default = ""]
 ```
 
 ### `s3_sse_config`
