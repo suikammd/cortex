@@ -351,4 +351,4 @@ exclude github.com/envoyproxy/go-control-plane/envoy v1.32.3
 // Required by Prometheus v0.308+ config package for OTLP translation strategy types.
 replace github.com/prometheus/otlptranslator => github.com/prometheus/otlptranslator v1.0.0
 
-replace github.com/thanos-io/objstore => github.com/suikammd/objstore v0.0.0-20260513054834-6c6424296e48
+replace github.com/thanos-io/objstore => github.com/suikammd/objstore v0.0.0-20260513065455-be84c742f8d5

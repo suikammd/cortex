@@ -445,6 +445,7 @@ func (b *Bucket) getRange(ctx context.Context, name string, off, length int64) (
 	}
 	if length != -1 {
 		req.Range = oss.Ptr(fmt.Sprintf("bytes=%d-%d", off, off+length-1))
+		req.RangeBehavior = oss.Ptr("standard")
 	}
 
 	resp, err := b.client.GetObject(ctx, req)

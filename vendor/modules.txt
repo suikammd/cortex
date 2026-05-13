@@ -1249,7 +1249,7 @@ github.com/stretchr/testify/assert
 github.com/stretchr/testify/assert/yaml
 github.com/stretchr/testify/mock
 github.com/stretchr/testify/require
-# github.com/thanos-io/objstore v0.0.0-20250804093838-71d60dfee488 => github.com/suikammd/objstore v0.0.0-20260513054834-6c6424296e48
+# github.com/thanos-io/objstore v0.0.0-20250804093838-71d60dfee488 => github.com/suikammd/objstore v0.0.0-20260513065455-be84c742f8d5
 ## explicit; go 1.24.0
 github.com/thanos-io/objstore
 github.com/thanos-io/objstore/exthttp
@@ -2054,4 +2054,4 @@ k8s.io/utils/clock
 # github.com/google/gnostic => github.com/googleapis/gnostic v0.6.9
 # gopkg.in/alecthomas/kingpin.v2 => github.com/alecthomas/kingpin v1.3.8-0.20210301060133-17f40c25f497
 # github.com/prometheus/otlptranslator => github.com/prometheus/otlptranslator v1.0.0
-# github.com/thanos-io/objstore => github.com/suikammd/objstore v0.0.0-20260513054834-6c6424296e48
+# github.com/thanos-io/objstore => github.com/suikammd/objstore v0.0.0-20260513065455-be84c742f8d5
